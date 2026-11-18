@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_=self.webpackChunk_||[]).push([["220"],{1912(s){s.exports=JSON.parse('{"blogBasePath":"/VRC-Wiki-Gizmos/blog","blogTitle":"Blog","authorsListPath":"/VRC-Wiki-Gizmos/blog/authors"}')}}]);
