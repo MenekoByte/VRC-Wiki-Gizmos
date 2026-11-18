@@ -1,0 +1,158 @@
+import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
+import {graphicsBootstrapScript} from 'wiki-xenotheme/bootstrap';
+import {pageThemes} from './pageThemes';
+
+// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+
+const config: Config = {
+  title: 'Wiki site',
+  tagline: 'figure out something witty and funny to put here',
+  favicon: 'img/logo/logo_kanji.png',
+
+  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+  future: {
+    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+  },
+
+  // Set the production url of your site here
+  url: 'https://monadoart.github.io',
+  // Set the /<baseUrl>/ pathname under which your site is served
+  // For GitHub pages deployment, it is often '/<projectName>/'
+  baseUrl: '/vrchat-avatar-wiki-guide/',
+
+  staticDirectories: ['static', 'node_modules/wiki-xenotheme/static'],
+
+  headTags: [
+    {
+      tagName: 'script',
+      attributes: {},
+      innerHTML: graphicsBootstrapScript(pageThemes),
+    },
+  ],
+
+  // GitHub pages deployment config.
+  // If you aren't using GitHub pages, you don't need these.
+  organizationName: 'MonadoArt', // Usually your GitHub org/user name.
+  projectName: 'vrchat-avatar-wiki-guide', // Usually your repo name.
+
+  onBrokenLinks: 'throw',
+
+  // Even if you don't use internationalization, you can use this field to set
+  // useful metadata like html lang. For example, if your site is Chinese, you
+  // may want to replace "en" with "zh-Hans".
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
+
+  presets: [
+    [
+      'classic',
+      {
+        docs: {
+          sidebarPath: './sidebars.ts',
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          // editUrl:
+          //  'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+        },
+        blog: {
+          showReadingTime: true,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+          },
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            'https://github.com/MonadoArt/vrchat-avatar-wiki-guide/tree/main/blog/',
+          // Useful options to enforce blogging best practices
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
+        },
+      } satisfies Preset.Options,
+    ],
+  ],
+
+themes: [
+  ['wiki-xenotheme', {pageThemes}],
+  [
+    '@easyops-cn/docusaurus-search-local',
+    {
+      hashed: true,
+      docsRouteBasePath: '/docs',
+      indexBlog: false,
+    },
+  ],
+],
+
+  themeConfig: {
+    // Replace with your project's social card
+    image: 'img/embed-banner.png',
+    docs: {
+      sidebar: {
+        hideable: true,
+      },
+    },
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
+    },
+    navbar: {
+      title: 'Monado Art!',
+      logo: {
+        alt: 'Monado Art Logo',
+        src: 'img/logo.png',
+      },
+      items: [
+        {
+          type: 'dropdown',
+          label: 'Community',
+          position: 'right',
+          items: [
+            {
+              label: 'Twitter / X',
+              href: 'https://x.com/Monado_Art',
+            },
+            {
+              label: 'Discord Server',
+              href: 'https://discord.gg/DtsFNcynqn',
+            },
+          ],
+        },
+      ],
+    },
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: 'Wiki',
+          items: [
+            { label: 'Welcome',      to: '/docs/intro' },
+            { label: 'Installation', to: '/docs/upload/installation' },
+            { label: 'Uploading',    to: '/docs/upload/uploading' },
+            { label: 'Troubleshooting', to: '/docs/troubleshooting' },
+          ],
+        },
+        {
+          title: 'Monado Art',
+          items: [
+            { label: 'GitHub', href: 'https://github.com/MonadoArt' },
+          ],
+        },
+      ],
+      copyright: `© ${new Date().getFullYear()} Monado Art · Built with <a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">Docusaurus</a>`,
+    },
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+    },
+  } satisfies Preset.ThemeConfig,
+};
+
+export default config;

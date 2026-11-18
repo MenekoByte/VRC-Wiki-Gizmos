@@ -1,0 +1,144 @@
+---
+sidebar_position: 3
+title: 3. Importing the Avatar
+---
+
+import { SceneIcon, PrefabIcon, PrefabVariantIcon, UnityPackage } from '@theme/UnityIcon';
+import { PlaceholderCard } from '@theme/PlaceholderCard';
+import { HoverOption, HoverVideo } from '@theme/HoverOption';
+import { DocsMediaRow } from '@theme/DocsMediaRow';
+import { VccIcon } from '@site/src/components/InstallationInlineUi';
+
+# Importing the Avatar
+
+To get the avatar into Unity you need to import a **Unity Package** - a <UnityPackage /> file that contains the model, textures, animations, and everything else the avatar needs.
+
+---
+
+## Step 1 - Open your project in Unity
+If it's not already open then:
+1. Open the <VccIcon />**Creator Companion** and go to the **Projects** tab.
+2. Click **Open Project** next to your project. Unity will launch, which can take a minute or two.
+
+:::info
+Unity is slow to open. Just let it load.
+:::
+---
+
+## Step 2 - Get the Unity Package
+
+
+
+<DocsMediaRow media={<PlaceholderCard title="Right-click Menu" text="Put a screenshot of the right-click menu here" topSpacing="none" />}>
+You should have a <UnityPackage /> file from your avatar download, named something like `Lucario ReUnited VRC.unitypackage`.
+</DocsMediaRow>
+
+:::tip
+**Not sure where it is?**
+
+Check your Downloads folder, or wherever you saved it after downloading.
+:::
+
+---
+
+## Step 3 - Import the Unity Package
+
+There are three ways to do this - pick whichever works for you:
+
+### Option A - Right-click the Assets folder
+<SubSectionBanner />
+
+The **Project window** is the panel at the bottom of Unity that shows all your project files. Inside it, you'll see a folder called **Assets** in the left sidebar.
+
+:::warning
+**Project window vs Hierarchy**
+
+These two panels are easy to mix up. The **Hierarchy** (left side of the screen) shows the objects in your current scene. The **Project window** (bottom) shows your files on disk. You want the Project window for this step.
+:::
+
+<HoverOption>
+<DocsMediaRow media={<HoverVideo title="Right-click Menu" />}>
+1. Right-click the **Assets** folder.
+2. Hover over **Import Package**.
+3. Click **Custom Package...**.
+4. Find your <UnityPackage /> file in the file browser and select it.
+</DocsMediaRow>
+</HoverOption>
+
+:::tip
+If the import dialog never appears after doing this, try **Option B** or **Option C** below instead.
+:::
+
+---
+
+### Option B - Drag and drop
+<SubSectionBanner />
+
+<HoverOption>
+<DocsMediaRow media={<HoverVideo title="Drag and Drop" />}>
+1. Open the folder where your <UnityPackage /> file is saved.
+2. Drag the file on top of the **Project window** in Unity.
+3. Drop it anywhere in the panel.
+</DocsMediaRow>
+</HoverOption>
+
+---
+
+### Option C - Double-click the file
+<SubSectionBanner />
+
+<HoverOption>
+<DocsMediaRow media={<HoverVideo title="Double-click Import" />}>
+1. Find the <UnityPackage /> file in your file explorer.
+2. Double-click the <UnityPackage />. If Unity is open it will pick it up automatically.
+</DocsMediaRow>
+</HoverOption>
+
+---
+
+Whichever method you used, Unity will show a list of everything in the package. Leave everything checked and click **Import**.
+
+:::caution
+Put an image of the Import dialog here
+:::
+
+Wait for the progress bar in the bottom-right corner to finish before doing anything else.
+
+:::info
+FBX import warnings may appear in the Console after importing. As long as the text is yellow and not red, they are safe to ignore.
+:::
+
+---
+
+:::danger
+**Don't start customizing yet.** Do a clean upload first to make sure everything is working correctly before you start making changes. It's much easier to spot problems on a fresh import than after you've already changed things. Head to [Uploading](./uploading) once you're done here.
+:::
+
+## Step 4 - Find the scene and prefab
+
+Once the import finishes, navigate to this folder in the Project window:
+
+```
+Assets / Monado_Art / Lucario ReUnited VRC /
+```
+
+You may also notice a `_MekenoTools` folder in your Assets. It's a helper package that came with the avatar - just leave it alone, you don't need to touch it.
+
+Inside you'll find:
+
+- <SceneIcon /> **The Scene** - Double-click to open it. If you're new to Unity this is the easiest starting point since the avatar is already set up inside it.
+- <PrefabIcon /> **The Prefab** - The avatar itself, as a reusable file. The included scene already has both prefabs placed in it, so if you just opened the scene you don't need to drag anything in. There are two versions:
+  - <PrefabVariantIcon /> **Lucario ReUnited PC Prefab** - the base version, with the Sir Aaron outfit and mohawk hair on by default.
+  - <PrefabVariantIcon /> **Lucario ReUnited PC Lite Prefab** - the same avatar, but with a few things removed to get a better VRChat performance rating (which affects how your avatar looks to others based on their settings).
+
+:::caution
+Put an image of the Project window showing the folder and files here
+:::
+
+Once you've opened the scene, the avatar should be visible in the Hierarchy on the left and in the Scene view in the center. You're good to go.
+
+---
+
+## Before you start customizing
+
+Head to [Uploading](./uploading) to get the avatar into VRChat before you touch anything.
