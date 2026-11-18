@@ -18,10 +18,10 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://monadoart.github.io',
+  url: 'https://menekobyte.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/vrchat-avatar-wiki-guide/',
+  baseUrl: '/VRC-Wiki-Gizmos/',
 
   staticDirectories: ['static', 'node_modules/wiki-xenotheme/static'],
 
@@ -35,8 +35,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'MonadoArt', // Usually your GitHub org/user name.
-  projectName: 'vrchat-avatar-wiki-guide', // Usually your repo name.
+  organizationName: 'MenekoByte', // Usually your GitHub org/user name.
+  projectName: 'VRC-Wiki-Gizmos', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -68,7 +68,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/MonadoArt/vrchat-avatar-wiki-guide/tree/main/blog/',
+            'https://github.com/MenekoByte/VRC-Wiki-Gizmos/tree/master/blog/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
