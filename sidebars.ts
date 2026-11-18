@@ -42,8 +42,7 @@ const sidebars: SidebarsConfig = {
         //   label: 'Blog',
         //   href: '/blog',
         // },
-        'avatar_changelog',
-        'style_reference',
+
       ],
     },
   ],
