@@ -1,0 +1,195 @@
+---
+sidebar_position: 2
+title: Shader
+---
+
+# Smear Shader
+
+This page will explain how to make use of the **MenekoByte/Smear Shader** shader. The **(?)** button in a section's header opens that section of this page.
+
+## Top of the material
+
+**Preset** - applies a premade preset to this material. It only changes what the preset needs leaving your textures and colors alone. It shows **Custom** when the material doesn't match any preset.
+
+| Preset | Blending | Fade In Length | Hide Below Speed | Fade Toward Smear End |
+|---|---|---|---|---|
+| **Motion Blur** | Similar to motion blur | 0.4 | 0.02 | 1 |
+| **Wispy** | Looks wispy, almost like a ghost | 0.3 | 0.005 | 0.7 |
+| **Negative** | Inverts the colors behind the smear | 0.3 | 0.005 | 0.7 |
+
+**Rendering** - how the smear blends with what's behind it. See [Rendering](#rendering).
+
+**Curve Trail (does it have a mid point?)** - tells the shader whether the smear has been generated with a midpoint. It doesn't add a midpoint to the mesh itself.
+
+---
+
+## Appearance
+
+
+**Mode**
+- **Single Material** - the smear uses **Smear Color** and **Texture**.
+- **Index In UV** - each part of the smear uses its own texture and color from the slots below. Use this when the generator's Material Slots is set to **Index In UV**.
+
+**Smear Color** - colors the smear, and its alpha sets how transparent it is. Only used in Single Material mode.
+
+**Texture** - Texture to be used on the smear. Only used in Single Material mode.
+
+**Texture Strength** - How strongly should the texture affect the color of the smear. 0 is off, 1 is full strength.
+
+**Smear Mask** - Decides where the smears show should. Black means don't show and white means show fully, in between means blend.
+
+**Slot 1 to 16** - shown in Index In UV mode. Each slot has a **Texture**, a **Color**, and a **Smear Mask**. Generate Smears enables the slots the smear needs, or you can set them by hand too.
+
+---
+
+## Fade In / Fade Out
+
+Controls when the smear appears and how it fades along its length.
+
+**Hide Below Speed (m)** - the smear isn't drawn at all while it's stretched less than this. Stops it flickering when you're standing still.
+
+**Fade In Start (m)** and **Fade In Length (m)** - the smear starts fading in once the smear is longer than Fade In Start, and reaches full strength after it crosses the Fade In Length threshold.
+
+**Fade Toward Smear End** - fades the smear out toward its end. At 0 the whole trail is visible and at 1 the very end is fully transparent.
+
+---
+
+## Ghosts
+
+**Ghost Mode**
+- **Standard** - draws the whole trail and cuts the ghosts out of it.
+- **Sorted** - draws each ghost in its own pass. Fixes layering at the cost of performance.
+
+**Ghost Count** - how many ghosts appear along the trail. 0 turns them off.
+
+**Shift Ghosts With Speed** - the faster you move, the more the ghosts bunch up toward the end of the trail. Negative values bunch them toward your avatar.
+
+**Speed For Full Shift (m)** -  how far the smear has to stretch for Shift with speed to reach it's full effect.
+
+**Space Ghosts By Distance** - instead of a fixed count, puts a ghost every **Ghost Distance (m)**, so longer smears get more ghosts, up to **Ghost Count**. Once the smear stretches past Speed For Full Shift, the spacing grows with it.
+
+**Ghost Width** - how wide each ghost is.
+
+**Ghost Softness** - how soft its edges are.
+
+**Fill Between Ghosts** - Standard mode only. Makes the gaps between ghosts partly visible instead of fully transparent.
+
+**Ghost Streak** - Sorted mode only. Stretches each ghost backward like motion blur.
+
+### Gradient/Rainbow/Per Ghost Color
+
+Colors each ghost differently.
+
+**Mode**
+- **Rainbow** - Shifts the color of each ghost. **Start Hue** sets the first color, **Hue Shift Per Ghost** how much the hue shifts per ghost, and **Rainbow Brightness** how bright the rainbow is.
+- **Gradient** - colors the trail along its length with a gradient. The gradient's alpha also sets how see-through the ghosts are.
+- **Per Ghost Color** - pick a color for each ghost individually. Colors past your Ghost Count are greyed out. The color alpha sets how seethrough each ghost is.
+
+**Hue Shift Speed** - cycles the colors over time.
+
+:::tip
+If the ghosts draw on top of each other in the wrong order, set **Ghost Mode** to **Sorted**.
+:::
+
+---
+
+## Lighting
+
+**Flat Lighting** - Changes the smear color by the world lighting and brightness.
+
+**Min Brightness** and **Max Brightness** - limits on how dark or bright the lighting can make the smear.
+
+**Monochrome** - Makes it so only the brightness of the lighting affects the smear rather than color.
+
+---
+
+## Emission
+
+Adds glow to the smear.
+
+**Emission Color** - the glow's color
+
+**Emission Intensity** - controls the glow's strength
+
+**Emission Map** - glow's texture
+
+**Use Base Color** - Whether to use the udnerlying colors or if emission should override them.
+
+---
+
+## Ink Stroke
+
+Eats away at the smear with a texture, so it breaks up like a dry brush stroke or ink on paper. The end of the trail breaks up more than the part near your avatar.
+
+**Erosion Texture** - a tileable grayscale noise texture, read from its red channel. Dark areas erode first and white doesn't erode at all. Import it as linear (sRGB off) so the erosion spreads evenly.
+
+**Streak Tiling (X Across / Y Along)** - how often the texture repeats across and along the trail. High X and low Y give long dry brush streaks. Raise Y for blotchy breakup.
+
+**Blotchiness With Stretch** - the further the smear stretches, the more the pattern repeats along it, so long streaks turn into short blotches. Negative values do the opposite and stretch it into longer streaks.
+
+**Shift With Speed** and **Speed For Full Shift (m)** - work like Shift Ghosts With Speed. Positive values push the pattern toward the end of the trail as it stretches.
+
+**Drag With Speed** - slides the pattern along the trail as the smear stretches.
+
+**Pan Over Time** - scrolls the pattern constantly. The sign sets the direction.
+
+**Second Layer Blend**, **Second Layer Tiling** and **Second Layer Pan Ratio** - mix in a second copy of the texture panning the other way, for a watery churn. At 0 the second layer is off.
+
+**Erosion Everywhere** - erodes the whole smear a little, including the part near your avatar.
+
+**Tail Erosion** and **Tail Erosion Curve** - how much extra the end erodes. A curve above 1 keeps the part near your avatar solid longer and pushes the erosion toward the end.
+
+**Full Erosion At Stretch (m)** - how far the smear has to stretch for Tail Erosion and Blotchiness With Stretch to take full effect. Lower it to make short swings erode too.
+
+**Edge Feather** - how soft the eroded edges are.
+
+**Edge Darkening**, **Edge Darkening Width** and **Edge Darkening Mode** - darken a band along the eroded edges, like ink pooling. **Multiply** darkens every color evenly. **Pigment Density** darkens the midtones most and leaves pure black and white alone.
+
+**Edge Glow** - adds a color along the eroded edges. Its alpha isn't used.
+
+:::info
+Ink only works in **Standard** ghost mode. For solid, opaque ink, use the **Fade** rendering mode (Src 5, Dst 10).
+:::
+
+---
+
+## Rendering
+
+How the smear is drawn on top of everything else. The **Rendering** picker at the top of the material sets these for you:
+
+| Mode | Look | Writes depth? |
+|---|---|---|
+| **Opaque** | Solid, nothing shows through. | Yes |
+| **Cutout** | Solid, with anything below 50% alpha completely transparent. | Yes |
+| **TransClipping** | See-through, with the faintest parts cut out. | Yes |
+| **Fade** | Regular see-through blending. | No |
+| **Transparent** | See-through, with premultiplied alpha. | No |
+| **Additive** | Adds color so the smear glows. | No |
+| **Soft Additive** | Adds color in a more soft manner, so bright areas don't blow out. | No |
+| **Multiplicative** | Darkens what's behind it. | No |
+| **2x Multiplicative** | Darkens and brightens what's behind it. | No |
+
+(**Src Blend**, **Dst Blend**, **Cull**, **ZWrite**) are the raw settings those modes use, if you want to set them by hand. The picker shows **Custom** when they don't match any preset mode.
+
+**Offset Factor** and **Offset Units** - how far to push the smear geometry in the renderer. Use this to have the smears appear behind the geometry instead of stencils.
+
+**Hide Near Camera (m)** - Distance at which the smears will start to hide. Set by Generator's **Hide in First Person**.
+
+**Stencil** - standard stencil settings, for combining the smear with other stencil effects. For more informtation look up [Poiyomi's Blog](https://www.poiyomi.com/blog/2022-07-11-stencilled-outlines)
+
+---
+
+## Locking
+
+When you upload, the shader is locked automatically similarly to how Poiyomi works. Locking strips away unused features making the shader run faster. Material variants can't be locked and are skipped with an error.
+
+You can manually lock the material by pressing **Lock Material** at the top of the UI. While a material is locked its settings are greyed out and cannot be edited.
+**Unlock Material** to be able to fully edit it.
+If you want to animate a property, right-click it and enable "Animated when Locked" which will allow the property to be animated after locking.
+
+## Performance
+
+The smear draws many see-through layers on top of each other while it's stretched, so its cost depends mostly on how much of the screen it covers and how many triangles it renders.
+
+**Ghosts** and **Ink Stroke** cost the most.
+<br />Switch off features you don't use: locking removes them completely.
