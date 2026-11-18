@@ -134,9 +134,8 @@ themes: [
           title: 'Wiki',
           items: [
             { label: 'Welcome',      to: '/docs/intro' },
-            { label: 'Installation', to: '/docs/upload/installation' },
-            { label: 'Uploading',    to: '/docs/upload/uploading' },
-            { label: 'Troubleshooting', to: '/docs/troubleshooting' },
+            { label: 'Smears Setup',  to: '/docs/smears/setup' },
+            { label: 'Smears Shader', to: '/docs/smears/shader' },
           ],
         },
         {

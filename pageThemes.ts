@@ -51,7 +51,7 @@ export const pageThemes: readonly PageThemeDefinition[] = [
     },
   },
   {
-    pattern: /\/docs\/customizing(?:\/|$)/,
+    pattern: /\/docs\/smears(?:\/|$)/,
     decor: 'customizing',
     style: 'alt',
     variables: {
