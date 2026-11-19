@@ -12,6 +12,9 @@ The Smear Generator builds the afterimage for your avatar from your avatar's mes
 
 Open it from **Tools > MenekoSmears > Smear Generator**.
 
+## Need help?
+If this guide doesn't answer your questions go ahead and feel free to pop into the [Support Discord Server](https://discord.gg/uf3WENGXta)
+
 ---
 
 ## Quick start
@@ -113,7 +116,7 @@ Settings in this section define how the Smear Mesh is built.
 - **Density** - **Mesh Density** is a percentage value for how many polygons to keep. 100% leaves the mesh as is, 50% will try to cut the poly count in half.
 - **Triangle Count** - **Target Smear Triangles** aims for that many triangles in the smear. The result is approximate.
 
-**Preserve UVs** - keeps UV seams intact, so textures look correct. Will increase the polygon count so turn it off if you dont need textures.
+**Preserve UVs** - keeps UV seams intact, so textures look correct. Will increase the polygon count so turn it off if you don't need textures.
 
 **Smear Triangles** - press **Calculate** to see how many triangles the smear will have.
 
@@ -149,7 +152,7 @@ The smear is driven by copies of your bones that lag behind the real ones. This 
 
 **Curved Trail** - adds a middle set of lagging bones and a middle row to the mesh, so the trail can arc and curve. The same setting as in Smear Mesh.
 
-**Smear Mid Bone Suffix** the name endign for the Middle Bones. It should be different from the End Bone suffix.
+**Smear Mid Bone Suffix** the name ending for the Middle Bones. It should be different from the End Bone suffix.
 
 Under **Settings**:
 - **Trail Follows Mid** - with Curved Trail on, the end bones follow the mid bones instead of your real bones. Their lag adds on top of the mid bones' lag, so the trail gets longer.
@@ -168,7 +171,8 @@ Turn on **Sync** to use the end strength for both.
 :::
 
 **Limb Follow Multiplier** - additively scales the follow strength along limbs, comapred to the rest of the body. Above 1, the tips (like tails, hands, ears, etc.) trail less. Below 1, they trail more. At 1 it does nothing.
-<br /> Under **Advanced**:
+
+Under **Advanced**:
 - **Measure From** - which bones count as limbs. **Humanoid Limbs** means anything in the Humanoid Avatar descriptor. **Bone Depth** means everything under the Root Bone, by distance from it. **Humanoid And Depth** means the arms and legs plus any other branches attached to humanoid bones or the Root Bone, such as tails, ears and hair.
 - **Ramp** - whether the multiplier builds up evenly toward the tips (**Linear**) or mostly near the tips (**Quadratic**).
 
@@ -263,7 +267,7 @@ Changes you make with Update Smear in Play mode are lost when you exit. The wind
 
 **Open Preview** (or **Tools > MenekoSmears > Preview Smear**) opens a window for seeing the smear move. **Avatar** is the object it previews; changing it stops any running preview.
 
-**Outside Play mode** - set a **Move Direction** and **Speed**, then press **Start Preview**. The smear bones are pushed back as if you were moving allowing you to see how the smear would look like.
+**Outside Play mode** - set a **Move Direction** and **Speed**, then press **Start Preview**. The smear bones are pushed back as if you were moving allowing you to see how the smear would look in-game.
 
 **In Play mode** - the avatar moves in a circle. Set the **Circle Radius**, **Speed** and **Circle Plane**, then press **Start Preview** to watch the real smear move.
 
