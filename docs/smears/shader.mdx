@@ -119,23 +119,23 @@ Adds glow to the smear.
 
 ## Ink Stroke
 
-Eats away at the smear with a texture, so it breaks up like a dry brush stroke or ink on paper. The end of the trail breaks up more than the part near your avatar.
+Eats away at the smear with a texture, so it breaks up like a dry brush stroke or fire. The end of the trail breaks up more than the part near your avatar.
 
-**Erosion Texture** - a tileable grayscale noise texture, read from its red channel. Dark areas erode first and white doesn't erode at all. Import it as linear (sRGB off) so the erosion spreads evenly.
+**Erosion Texture** - Texture that defines the erosion. Dark areas erode first and white doesn't erode at all. Works best when texture is imported as Lienar (sRGB off).
 
-**Streak Tiling (X Across / Y Along)** - how often the texture repeats across and along the trail. High X and low Y give long dry brush streaks. Raise Y for blotchy breakup.
+**Streak Tiling (X Across / Y Along)** - how often the texture repeats across and along the trail. High X and low Y give long dry brush streaks.
 
 **Blotchiness With Stretch** - the further the smear stretches, the more the pattern repeats along it, so long streaks turn into short blotches. Negative values do the opposite and stretch it into longer streaks.
 
-**Shift With Speed** and **Speed For Full Shift (m)** - work like Shift Ghosts With Speed. Positive values push the pattern toward the end of the trail as it stretches.
+**Shift With Speed** and **Speed For Full Shift (m)** - The faster you move, the more the erosion bunch up toward the end of the trail. Negative values bunch them toward your avatar. Positive values push the pattern toward the end of the trail as it stretches.
 
-**Drag With Speed** - slides the pattern along the trail as the smear stretches.
+**Drag With Speed** - slides the pattern along the trail with speed.
 
-**Pan Over Time** - scrolls the pattern constantly. The sign sets the direction.
+**Pan Over Time** - scrolls the pattern constantly.
 
-**Second Layer Blend**, **Second Layer Tiling** and **Second Layer Pan Ratio** - mix in a second copy of the texture panning the other way, for a watery churn. At 0 the second layer is off.
+**Second Layer Blend**, **Second Layer Tiling** and **Second Layer Pan Ratio** - mix in a second copy of the texture panning the other way, for a watery churn. At 0 it's disabled.
 
-**Erosion Everywhere** - erodes the whole smear a little, including the part near your avatar.
+**Erosion Everywhere** - Controls how much the entire smear gets eroded.
 
 **Tail Erosion** and **Tail Erosion Curve** - how much extra the end erodes. A curve above 1 keeps the part near your avatar solid longer and pushes the erosion toward the end.
 
@@ -145,10 +145,10 @@ Eats away at the smear with a texture, so it breaks up like a dry brush stroke o
 
 **Edge Darkening**, **Edge Darkening Width** and **Edge Darkening Mode** - darken a band along the eroded edges, like ink pooling. **Multiply** darkens every color evenly. **Pigment Density** darkens the midtones most and leaves pure black and white alone.
 
-**Edge Glow** - adds a color along the eroded edges. Its alpha isn't used.
+**Edge Glow** - adds a color along the eroded edges.
 
 :::info
-Ink only works in **Standard** ghost mode. For solid, opaque ink, use the **Fade** rendering mode (Src 5, Dst 10).
+For solid, opaque ink, use the **Fade** rendering mode.
 :::
 
 ---

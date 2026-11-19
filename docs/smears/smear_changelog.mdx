@@ -2,4 +2,60 @@
 sidebar_position: 98
 title: Changelog
 ---
-v6
+
+## v6
+
+### Smear Generator
+
+- Plain Mesh Renderers are now full smear sources allowing props and weapons to get smears too.
+- Combine Meshes was removed. Each group becomes one smear, and meshes in Keep Separate get their own. The Combine Mesh Groups header is gone and the lists have a short hint.
+- Generate is blocked with a "These need fixing:" popup while anything needs attention. Missing or broken things are highlighted in red.
+- A warning appears when a source mesh doesn't have Read/Write enabled.
+- Section headers show a pending mark (* and an edge bar) when something in them differs from the installed smear: yellow for Update, orange for Regenerate.
+- Update Smear and Regenerate Smear keep a faint tint at all times and light up fully when needed.
+- Fixed Regenerate staying highlighted when nothing had changed.
+- Fixed the Meshes section always showing as changed.
+- The preview picks up Update Smear and Apply immediately. The preview window has a fixed height now.
+- Generation info (source meshes, settings, triangle counts) is saved into the generated mesh asset.
+- "No generated smear detected" replaces the Detected Smear field.
+- Help buttons on each section open the matching wiki page, and there is an Open Wiki button next to Re-read Settings.
+- Added a credits bar at the bottom links to the author and the store page.
+- The window's minimum width now fits the cost row.
+
+
+### MeshWorks
+
+- The generator now runs on MeshWorks, a shared mesh and armature library shipped as a DLL. Bone merging, auto exclude and merge, bone paths, mesh combining, hull building helpers and the mesh editing toolkit moved there.
+- The generated smear renders exactly the same as before: every triangle matches the old output in all 24 configurations tested.
+- The old bundled simplifier was replaced by a new decimator that can reduce meshes further while keeping UV seams. It produces the same result as before its speed-up, now about 30% faster (around 1.5 s for a full body mesh in Unity).
+- Combined meshes keep correct normals when mirrored, and bone paths with special characters are handled.
+
+### Smear Material
+
+- A Presets window lists the presets with thumbnails. Pick one and use Create Material or Apply to Current Material.
+- Create and Apply sit next to the Smear Material field. Create overwrites an existing material in place and puts it on the installed smear.
+- Apply only swaps the material.
+- New Update Material button sets Curve Trail, slot textures and Hide Distance. It glows yellow when the material is out of date.
+
+### Smear Mesh
+
+- Advanced settings have new Read/Write (on by default) and Skip Vertex Colors (off by default) options.
+- Advanced toggles now have the checkbox first.
+- The % sign sits after the Mesh Density field.
+
+### Bone Manager
+
+- Armatures are grouped under the object they belong to.
+- Link Selection was replaced with a Presets dropdown that saves and loads bone setups as JSON files. Load replaces the current setup.
+- Exclude Unweighted Bones and Merge Small Bones now add to the current setup instead of replacing it.
+- Merge Small Bones merges intermediate finger bones into their parent and excludes their children, including bones linked to them.
+- Switching avatars clears the old Root Bone, exclusions and merges.
+
+### Smear Shader
+
+- Ghost Gradient colors are baked now. Cuts ghosts performance cost by about 4x vs no ghosts.
+- Ghost colors are only worked out for the colour mode in use. Before, the gradient ran for every pixel even in Rainbow mode.
+- Per-strip maths (ghost spacing, band scale, ink shift and stretch) is worked out once per vertex instead of once per pixel, about 10% faster on a real smear with the same look.
+- Fully transparent pixels are dropped early in normal and premultiplied blend modes.
+- Removed Geometric ghost mode. Standard and Sorted remain. Geometric materials switch to Sorted when unlocked.
+- Section help buttons were added to the headers.
