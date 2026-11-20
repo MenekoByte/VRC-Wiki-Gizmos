@@ -3,9 +3,43 @@ sidebar_position: 98
 title: Changelog
 ---
 
+This is the changelog for the Smear system
+You can download the newest package from whichever store you bought it from
+<br /> Jinxxy: [Link](https://jinxxy.com/Monado_Art/menekoSmears)
+<br /> Gumroad: [Link](https://monadoart.gumroad.com/l/menekoSmears)
+
+
 ## v6.2
 
+### Smear Generator
+
+- Realized I was being an idiot and decided to stop being one resulting in much lower memory use and shorter freezes on big meshes. On a 300k triangle test avatar Generate went from 45.8 s to about 12 s, the longest editor freeze from 16.8 s to about 2 s, and the memory it adds while running from about 6 GB to about 0.35 GB. A regular 27k triangle avatar generates in about 1 s.
+- Work is no longer repeated: Generate reuses a decimation that Calculate already did, and Triangle Count mode decimates once instead of twice. This is kept in memory only and cleared after generating.
+- The cost row's Calculate runs in the background and shows "Calculating..." instead of freezing the editor.
+- The generator tells you when an update is out: "Update Available!" shows next to the installed version in the bottom bar.
+- The "Needs attention" box is only as tall as its text and scrolls once it gets long.
+
+### Smear Mesh
+
+- Generated smear assets are far smaller in size. The mesh no longer stores normals, tangents, unused UV components or blend shape normal and tangent deltas aka things the smears didnt need, so the uploaded avatar uses less memory too.
+- The smear asset is saved in binary instead of a god damn yaml file, and is written once instead of twice.
+- Blend shape movements under 0.01 mm are dropped.
+
+### Smear Constraints
+
+- On VRChat SDK 3.10.6 and newer constraints use VRChat's constraint Smoothing Factor, so the trail lags the same at any frame rate instead of getting shorter at higher fps.
+
+### Smear Shader
+
+- New Rainbow, Fire, Ink and Shadow entries in the Preset dropdown.
+
 ## v6.1
+
+### Smear Generator
+
+- Source meshes no longer need Read/Write turned on in their import settings.
+- Generate runs in the background with a progress bar, a Cancel button and a time estimate, instead of freezing Unity. Progress also shows in Unity's background tasks.
+- The "Needs attention" box uses the error icon and is capped in height, scrolling when the list is long.
 
 ## v6
 
